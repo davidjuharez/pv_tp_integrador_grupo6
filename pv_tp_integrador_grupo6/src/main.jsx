@@ -1,10 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+//import './index.css'
 import App from './App.jsx'
+import AdminProvider from './context/AdminContext'; // Importamos el provider
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <AdminProvider>
+      <App />
+    </AdminProvider>
   </StrictMode>,
-)
+);
