@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography } from '@mui/material';
+import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography,TextField } from '@mui/material';
 import '../styles/listaClientes.css';
 
 const ListaClientes = () => {
@@ -7,6 +7,8 @@ const ListaClientes = () => {
   const [clientes, setClientes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+  const [busqueda, setBusqueda] = useState('');//estado para la busqueda
 
   useEffect(()=>{
     const obtenerClientes = async () => {
@@ -30,6 +32,15 @@ const ListaClientes = () => {
     obtenerClientes();
   }, []);
 
+  //filtro de clientes por apellido o ciudad
+  const clientesFiltrados = clientes.filter((cliente) => {
+    const termino = busqueda.toLowerCase();
+    const apellido = cliente.name.lastname.toLowerCase();
+    const ciudad = cliente.address.city.toLowerCase();
+    
+    return apellido.includes(termino) || ciudad.includes(termino);
+  });
+
   if (loading) {
     return (
       <Box className="loading-container">
@@ -52,8 +63,19 @@ const ListaClientes = () => {
         Listado de Clientes
       </Typography>
 
+      <Box className="contenedor-buscador">
+        <TextField
+          label="Buscar por apellido o ciudad..."
+          variant="outlined"
+          fullWidth
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+        />
+      </Box>
+
+
       <Grid container spacing={3}>
-        {clientes.map((cliente) => (
+        {clientesFiltrados.map((cliente) => (
           <Grid item xs={12} sm={6} md={4} key={cliente.id}>
             <Card className="tarjeta-cliente">
               <CardContent>
