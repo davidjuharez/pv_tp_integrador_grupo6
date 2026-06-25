@@ -1,0 +1,12 @@
+/*contenedor para centrar el logo de carga*/
+.loading-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+/*para la alerta de error */
+.error-container {
+  margin-top: 16px;
+  padding: 16px;
+}

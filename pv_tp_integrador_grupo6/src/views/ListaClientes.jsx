@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { Box, CircularProgress, Alert } from '@mui/material';
+import '../styles/listaClientes.css';
+
 const ListaClientes = () => {
 
   const [clientes, setClientes] = useState([]);
@@ -27,6 +30,21 @@ const ListaClientes = () => {
     obtenerClientes();
   }, []);
 
+  if (loading) {
+    return (
+      <Box className="loading-container">
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return (
+      <Box className="error-container">
+        <Alert severity="error">{error}</Alert>
+      </Box>
+    );
+  }
 
   return (
     <div>
