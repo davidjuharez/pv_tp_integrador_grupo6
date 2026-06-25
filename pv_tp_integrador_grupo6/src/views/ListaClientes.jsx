@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, CircularProgress, Alert, Grid2, Card, CardContent, Typography } from '@mui/material';
+import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography } from '@mui/material';
 import '../styles/listaClientes.css';
 
 const ListaClientes = () => {
@@ -52,9 +52,9 @@ const ListaClientes = () => {
         Listado de Clientes
       </Typography>
 
-      <Grid2 container spacing={3}>
+      <Grid container spacing={3}>
         {clientes.map((cliente) => (
-          <Grid2 size={{ xs: 12, sm: 6, md: 4 }} key={cliente.id}>
+          <Grid item xs={12} sm={6} md={4} key={cliente.id}>
             <Card className="tarjeta-cliente">
               <CardContent>
                 <Typography variant="subtitle2" color="text.secondary" gutterBottom>
@@ -74,9 +74,9 @@ const ListaClientes = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid2>
+          </Grid>
         ))}
-      </Grid2>
+      </Grid>
     </Box>
   );
 };
