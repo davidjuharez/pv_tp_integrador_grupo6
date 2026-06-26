@@ -4,29 +4,30 @@ import Dashboard from "./views/Dashboard";
 import ListaClientes from "./views/ListaClientes";
 import Login from "./views/Login";
 import ProtectedRoute from "./components/common/ProtectedRoute";
+import DetalleCliente from "./views/DetalleCliente";
 
 const App = () => {
   return (
     <BrowserRouter>
-      {/* Debes agregar el componente <Routes> aquí */}
       <Routes>
-  {/* Ruta pública */}
-  <Route path="/login" element={<Login />} />
+        {/*para ruta pública*/}
+        <Route path="/login" element={<Login />} />
 
-  {/* Rutas protegidas */}
-  <Route 
-    path="/" 
-    element={
-      <ProtectedRoute>
-        <Layout />
-      </ProtectedRoute>
-    }
-  >
-    {/* Estas rutas hijas se renderizarán dentro del Outlet de Layout */}
-    <Route index element={<Dashboard />} />
-    <Route path="clientes" element={<ListaClientes />} />
-  </Route>
-</Routes>
+        {/*ruta protegida*/}
+        <Route 
+          path="/" 
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="clientes" element={<ListaClientes />} />
+          {/*ruta dinamica con el parametro de id*/}
+          <Route path="clientes/:id" element={<DetalleCliente />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 };

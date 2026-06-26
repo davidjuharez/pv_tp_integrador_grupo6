@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography,TextField, Button} from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography ,TextField , Button, CardActions} from '@mui/material';
 import '../styles/listaClientes.css';
 import FormularioCliente from '../components/common/FormularioCliente';
 
@@ -90,8 +91,8 @@ const ListaClientes = () => {
 
       <Grid container spacing={3}>
         {clientesFiltrados.map((cliente) => (
-          <Grid item xs={12} sm={6} md={4} key={cliente.id}>
-            <Card className="tarjeta-cliente">
+          <Grid item xs={12} sm={6} md={4} lg={3} xl={2.4} key={cliente.id}>
+            <Card className="tarjeta-cliente" sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
               <CardContent>
                 <Typography variant="subtitle2" color="text.secondary" gutterBottom>
                   ID Cliente: #{cliente.id}
@@ -108,7 +109,20 @@ const ListaClientes = () => {
                 <Typography variant="body2" color="text.secondary" className="info-cliente">
                   <strong>Ciudad:</strong> {cliente.address.city}
                 </Typography>
+
               </CardContent>
+              <CardActions sx={{ p: 2, pt: 0 }}>
+              <Button
+                component={Link}
+                to={`/clientes/${cliente.id}`}
+                variant="outlined"
+                color="primary"
+                fullWidth
+                className="boton-ver-ficha"
+              >
+                Ver Ficha Completa
+              </Button>
+            </CardActions>
             </Card>
           </Grid>
         ))}
