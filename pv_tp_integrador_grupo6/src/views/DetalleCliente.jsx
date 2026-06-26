@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Box, CircularProgress, Alert, Typography, Button } from '@mui/material';
 import { useAdmin } from '../context/AdminContext';
 
 const DetalleCliente = ()=>{
   const { id } = useParams();
-
   const { admin } = useAdmin();
+
+  const navigate = useNavigate();
 
   const [cliente, setCliente]= useState(null);
   const [loading, setLoading] =useState(true);
@@ -33,6 +34,37 @@ const DetalleCliente = ()=>{
 
     obtenerCliente();
   }, [id]);
+
+  //funcion que manejara la eliminacion
+  const manejarEliminar = async () => {
+    const confirmar = window.confirm("¿Estás seguro de que deseas eliminar este cliente?");
+    if (!confirmar) return;
+
+    try {
+      setLoading(true);
+      
+      //la petición con el metod Delete
+      const respuesta = await fetch(`https://fakestoreapi.com/users/${id}`, {
+        method: 'DELETE' 
+      });
+
+      if (!respuesta.ok) {
+        throw new Error('No se pudo eliminar el cliente en el servidor');
+      }
+
+      const datos = await respuesta.json();
+      
+      //mensaje de exito
+      alert(`¡Cliente eliminado con éxito! Datos del usuario borrado: ${datos.username}`);
+      navigate('/clientes')
+      
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   if (loading) {
     return (
@@ -101,6 +133,7 @@ const DetalleCliente = ()=>{
           variant="contained" 
           color="error" 
           className="boton-eliminar"
+          onClick={manejarEliminar}//al hacer clic se ejecuta la funcion para eliminado
         >
         Eliminar Cliente de la Base de Datos
         </Button>
