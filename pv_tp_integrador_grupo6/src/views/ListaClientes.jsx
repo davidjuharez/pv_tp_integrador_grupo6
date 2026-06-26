@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography,TextField, Button} from '@mui/material';
 import '../styles/listaClientes.css';
 import FormularioCliente from '../components/common/FormularioCliente';
@@ -108,6 +109,20 @@ const ListaClientes = () => {
                 <Typography variant="body2" color="text.secondary" className="info-cliente">
                   <strong>Ciudad:</strong> {cliente.address.city}
                 </Typography>
+
+                {/*boton para ir a la ruta dinamica*/}
+                <Button
+                  component={Link}
+                  to={`/clientes/${cliente.id}`}
+                  variant="outlined"
+                  color="primary"
+                  fullWidth
+                  className="boton-ver-ficha"
+                >
+                  Ver Ficha Completa
+                </Button>
+
+
               </CardContent>
             </Card>
           </Grid>
