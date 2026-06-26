@@ -25,7 +25,7 @@ const App = () => {
           <Route index element={<Dashboard />} />
           <Route path="clientes" element={<ListaClientes />} />
           {/*ruta dinamica con el parametro de id*/}
-          <Route path="clientes/:id" element={<DetalleClientes />} />
+          <Route path="clientes/:id" element={<DetalleCliente />} />
         </Route>
       </Routes>
     </BrowserRouter>
