@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography,TextField } from '@mui/material';
+import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography,TextField, Button} from '@mui/material';
 import '../styles/listaClientes.css';
 import FormularioCliente from '../components/common/FormularioCliente';
 
@@ -10,6 +10,8 @@ const ListaClientes = () => {
   const [error, setError] = useState(null);
   
   const [busqueda, setBusqueda] = useState('');//estado para la busqueda
+
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);//estado para mostrar el formulario de alta
 
   useEffect(()=>{
     const obtenerClientes = async () => {
@@ -64,7 +66,16 @@ const ListaClientes = () => {
         Listado de Clientes
       </Typography>
 
-      <FormularioCliente />
+      <Box sx={{ mb: 3 }}>
+        <Button 
+          variant="contained" 
+          color={mostrarFormulario ? "error" : "success"}
+          onClick={() => setMostrarFormulario(!mostrarFormulario)}
+        >
+          {mostrarFormulario ? "Cancelar Alta" : "Agregar Nuevo Cliente"}
+        </Button>
+      </Box>
+      {mostrarFormulario && <FormularioCliente />}{/*condicion para saber si mostrar o no el formulario alta*/}
 
       <Box className="contenedor-buscador">
         <TextField
