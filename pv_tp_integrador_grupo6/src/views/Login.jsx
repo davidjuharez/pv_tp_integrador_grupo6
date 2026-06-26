@@ -23,7 +23,7 @@ const Login = () => {
     return (
         <Container maxWidth="xs" sx={{ mt: 8 }}>
             <Paper elevation={3} sx={{ p: 4 }}>
-                <Typography variant="h5" align="center" sx={{ mb: 3 }}>Acceso Administrador</Typography>
+                <Typography variant="h5" align="center" sx={{ mb: 3 }}>Acceso</Typography>
                 <form onSubmit={handleSubmit}>
                     <TextField fullWidth label="Nombre" name="nombre" onChange={handleChange} margin="normal" required />
                     <TextField fullWidth select label="Sector" name="sector" value={form.sector} onChange={handleChange} margin="normal" required>

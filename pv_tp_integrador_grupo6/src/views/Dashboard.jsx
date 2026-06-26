@@ -8,17 +8,17 @@ const Dashboard = () => {
 
   return (
     <Container maxWidth="lg" sx={{ mt: 5, mb: 5 }}>
-      {/* 1. Header con mejor estilo */}
+      
       <Box sx={{ mb: 6, textAlign: 'left', borderBottom: '2px solid #e0e0e0', pb: 2 }}>
         <Typography variant="h3" sx={{ fontWeight: 800, color: '#1a237e' }}>
-          Dashboard
+          Panel de Cliente
         </Typography>
         <Typography variant="h6" color="text.secondary">
           Bienvenido al panel, <strong>{admin?.nombre}</strong> | Sector: {admin?.sector}
         </Typography>
       </Box>
 
-      {/* 2. Tarjetas con mejor separación y elevación */}
+      {/* 2. Tarjetas con separación y elevación */}
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
           <Card elevation={3} sx={{ borderRadius: 3, borderTop: '6px solid #1976d2', height: '100%' }}>
@@ -26,7 +26,7 @@ const Dashboard = () => {
               <CloudQueueIcon sx={{ fontSize: 60, color: '#1976d2' }} />
               <Box>
                 <Typography variant="overline" sx={{ fontWeight: 'bold' }}>Estado del Sistema</Typography>
-                <Typography variant="h5">Conectado: FakeStoreAPI</Typography>
+                <Typography variant="h5">Conectado: {admin?.nombre}</Typography>
                 <Typography variant="body1" sx={{ color: 'success.main', fontWeight: 'bold' }}>● ONLINE</Typography>
               </Box>
             </CardContent>

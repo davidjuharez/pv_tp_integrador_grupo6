@@ -1,3 +1,18 @@
+Asignatura->Programación Visual PROGRAMACIÓN VISUAL TRABAJO PRÁCTICO INTEGRAL - GRUPO 6
+
+CRUZ Jonatan Anibal https://github.com/Jonatan27C
+JUAREZ David https://github.com/davidjuharez
+RODRIGUEZ María Lourdes https://github.com/lzmar
+VENENCIA Shashiquen Brenda Mailén https://github.com/shashiquen-b-m-venencia
+
+Nuestro repositorio: https://github.com/davidjuharez/pv_tp_integrador_grupo6
+
+Descripción del Proyecto:
+
+Esta aplicación web funciona como un Panel de Control de Clientes que gestiona información mediante el consumo asincrónico de la FakeStore API. El sistema implementa autenticación con persistencia en LocalStorage y asegura la protección de todas las vistas mediante rutas restringidas, redirigiendo automáticamente al usuario al Login si intenta ingresar sin sesión activa. El proyecto utiliza una arquitectura modular con React y Vite, empleando componentes jerárquicos, funciones flecha y el manejo de estados globales mediante Context API. La lógica se sustenta en el uso de hooks como useState, useEffect y useAdmin para la gestión de estados mientras que la obtención de datos se realiza mediante peticiones asincrónicas con async/await y fetch. Los administradores pueden registrar nuevos clientes, realizar búsquedas dinámicas y acceder a fichas detalladas mediante rutas con parámetros. La interfaz del Dashboard renderiza los datos dinámicamente en componentes tipo Card y utiliza MUI para asegurar un acabado profesional, además de definir permisos específicos por sector que restringen la eliminación de registros exclusivamente al rol de Gerencia.
+
+GRUPO 6
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
