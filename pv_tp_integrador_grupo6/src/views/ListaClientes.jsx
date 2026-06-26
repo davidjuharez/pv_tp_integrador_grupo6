@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography,TextField } from '@mui/material';
 import '../styles/listaClientes.css';
+import FormularioCliente from '../components/common/FormularioCliente';
 
 const ListaClientes = () => {
 
@@ -62,6 +63,8 @@ const ListaClientes = () => {
       <Typography variant="h4" component="h1" className="titulo-seccion">
         Listado de Clientes
       </Typography>
+
+      <FormularioCliente />
 
       <Box className="contenedor-buscador">
         <TextField
