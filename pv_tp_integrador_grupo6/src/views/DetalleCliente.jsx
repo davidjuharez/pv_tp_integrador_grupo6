@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, CircularProgress, Alert, Typography } from '@mui/material';
+import { Box, CircularProgress, Alert, Typography, Button } from '@mui/material';
+import { useAdmin } from '../context/AdminContext';
 
 const DetalleCliente = ()=>{
   const { id } = useParams();
+
+  const { admin } = useAdmin();
 
   const [cliente, setCliente]= useState(null);
   const [loading, setLoading] =useState(true);
@@ -65,7 +68,7 @@ const DetalleCliente = ()=>{
       </Typography>
 
       {/*datos de la direccion*/}
-      <Typography variant="h6" component="h2" className="subtitulo-seccion" sx={{ mt: 3 }}>
+      <Typography variant="h6" component="h2" className="subtitulo-seccion">
         Dirección Completa
       </Typography>
       <Typography variant="body1" className="info-cliente">
@@ -82,7 +85,7 @@ const DetalleCliente = ()=>{
       </Typography>
 
       {/*las credenciales de acceso*/}
-      <Typography variant="h6" component="h2" className="subtitulo-seccion" sx={{ mt: 3 }}>
+      <Typography variant="h6" component="h2" className="subtitulo-seccion">
         Credenciales de Acceso
       </Typography>
       <Typography variant="body1" className="info-cliente">
@@ -91,6 +94,17 @@ const DetalleCliente = ()=>{
       <Typography variant="body1" className="info-cliente">
         <strong>Contraseña:</strong> {cliente.password}
       </Typography>
+
+      {/*la condicion dependiendo el rol, para gerencia se habilita el boton rojo para eliminar cliente*/}
+      {admin.sector === 'Gerencia' && (
+        <Button 
+          variant="contained" 
+          color="error" 
+          className="boton-eliminar"
+        >
+        Eliminar Cliente de la Base de Datos
+        </Button>
+      )}
     </Box>
   );
 };
