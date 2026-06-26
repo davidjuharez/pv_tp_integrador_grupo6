@@ -4,12 +4,14 @@ const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
     const [admin, setAdmin] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const session = localStorage.getItem("adminSession");
         if (session) {
             setAdmin(JSON.parse(session));
         }
+        setIsLoading(false);
     }, []);
 
     const login = (nombre, sector) => {
@@ -24,7 +26,7 @@ export const AdminProvider = ({ children }) => {
     };
 
     return (
-        <AdminContext.Provider value={{ admin, login, logout, isAuthenticated: !!admin }}>
+        <AdminContext.Provider value={{ admin, login, logout, isAuthenticated: !!admin, isLoading }}>
             {children}
         </AdminContext.Provider>
     );
