@@ -4,7 +4,7 @@ import Dashboard from "./views/Dashboard";
 import ListaClientes from "./views/ListaClientes";
 import Login from "./views/Login";
 import ProtectedRoute from "./components/common/ProtectedRoute";
-import DetalleClientes from "./views/DetalleClientes";
+import DetalleCliente from "./views/DetalleCliente";
 
 const App = () => {
   return (
