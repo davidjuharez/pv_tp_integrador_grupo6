@@ -1,8 +1,11 @@
-Asignatura->Programación Visual PROGRAMACIÓN VISUAL TRABAJO PRÁCTICO INTEGRAL - GRUPO 6
+Asignatura-> PROGRAMACIÓN VISUAL TRABAJO PRÁCTICO INTEGRAL - GRUPO 6
 
 CRUZ Jonatan Anibal https://github.com/Jonatan27C
+
 JUAREZ David https://github.com/davidjuharez
+
 RODRIGUEZ María Lourdes https://github.com/lzmar
+
 VENENCIA Shashiquen Brenda Mailén https://github.com/shashiquen-b-m-venencia
 
 Nuestro repositorio: https://github.com/davidjuharez/pv_tp_integrador_grupo6
