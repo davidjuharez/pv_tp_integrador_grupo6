@@ -1,18 +1,30 @@
 import { useState } from 'react';
-import { Box, TextField, Button, Typography, Snackbar, Alert } from '@mui/material';
+import { Box, TextField, Button, Typography, Snackbar, Alert, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import '../../styles/formularioCliente.css';
 
 const FormularioCliente =()=>{
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [email, setEmail] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [ciudad, setCiudad] = useState('');
+
   //estados para la notificación flotante de exito
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [mensajeExito, setMensajeExito] = useState('');
 
   //esta es la función que maneja el envio del formulario
-    const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  //estructura para la validacion correcta del correo
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  //si el correo no coincide con el molde, mostrá la alerta y frená el envío con el return
+  if (!regexEmail.test(email)) {
+    alert('Por favor, ingresá un correo electrónico válido (ejemplo: usuario@correo.com)');
+    return;
+  }
 
     //la estructura del objeto segun fakeAPI
     const nuevoCliente = {
@@ -24,13 +36,13 @@ const FormularioCliente =()=>{
         lastname: apellido
       },
       address: {
-        city: 'Mendoza',
-        street: 'Av. San Martín',
+        city: ciudad,
+        street: 'San Martín',
         number: 123,
         zipcode: '5500',
         geolocation: { lat: '-34.6037', long: '-58.3816' }
       },
-      phone: '123-456-789'
+      phone: telefono
     };
     try {
       //esta es la petición POST
@@ -54,6 +66,8 @@ const FormularioCliente =()=>{
       setNombre('');//limpiamos los campos del formulario
       setApellido('');
       setEmail('');
+      setTelefono('');
+      setCiudad('');
     } catch (error) {
       alert('Hubo un error: ' + error.message);
     }
@@ -62,7 +76,7 @@ const FormularioCliente =()=>{
   return (
     <Box component="form" onSubmit={handleSubmit} className="formulario-alta">
       <Typography variant="h6" className="titulo-formulario">
-        Dar de Alta Nuevo Cliente
+        Alta Nuevo Cliente
       </Typography>
       
       <Box className="campos-formulario">
@@ -88,6 +102,32 @@ const FormularioCliente =()=>{
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
+        <TextField
+          label="Teléfono"
+          variant="outlined"
+          type="number"
+          required
+          value={telefono}
+          onChange={(e) => setTelefono(e.target.value)}
+        />
+        <FormControl fullWidth variant="outlined" required>
+          <InputLabel id="select-ciudad-label">Ciudad</InputLabel>
+          <Select
+            labelId="select-ciudad-label"
+            id="select-ciudad"
+            value={ciudad}
+            onChange={(e) => setCiudad(e.target.value)}
+            label="Ciudad"
+          >
+            <MenuItem value="Mendoza">Mendoza</MenuItem>
+            <MenuItem value="Buenos Aires">Buenos Aires</MenuItem>
+            <MenuItem value="Córdoba">Córdoba</MenuItem>
+            <MenuItem value="Salta">Salta</MenuItem>
+            <MenuItem value="Jujuy">Jujuy</MenuItem>
+          </Select>
+        </FormControl>
+
         <Button type="submit" variant="contained" color="primary" className="boton-guardar">
           Guardar Cliente
         </Button>
