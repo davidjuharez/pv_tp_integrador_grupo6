@@ -97,9 +97,6 @@ const ListaClientes = () => {
           <Grid item xs={12} sm={6} md={4} lg={3} xl={2.4} key={cliente.id}>
             <Card className="tarjeta-cliente" sx={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
               <CardContent>
-                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                  ID Cliente: #{cliente.id}
-                </Typography>
                 <Typography variant="h6" component="h2" className="nombre-cliente">
                   {cliente.name.firstname} {cliente.name.lastname}
                 </Typography>

@@ -76,7 +76,7 @@ const FormularioCliente =()=>{
   return (
     <Box component="form" onSubmit={handleSubmit} className="formulario-alta">
       <Typography variant="h6" className="titulo-formulario">
-        Dar de Alta Nuevo Cliente
+        Alta Nuevo Cliente
       </Typography>
       
       <Box className="campos-formulario">
