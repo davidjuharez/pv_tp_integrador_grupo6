@@ -14,8 +14,17 @@ const FormularioCliente =()=>{
   const [mensajeExito, setMensajeExito] = useState('');
 
   //esta es la función que maneja el envio del formulario
-    const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  //estructura para la validacion correcta del correo
+  const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  //si el correo no coincide con el molde, mostrá la alerta y frená el envío con el return
+  if (!regexEmail.test(email)) {
+    alert('Por favor, ingresá un correo electrónico válido (ejemplo: usuario@correo.com)');
+    return;
+  }
 
     //la estructura del objeto segun fakeAPI
     const nuevoCliente = {
@@ -97,6 +106,7 @@ const FormularioCliente =()=>{
         <TextField
           label="Teléfono"
           variant="outlined"
+          type="number"
           required
           value={telefono}
           onChange={(e) => setTelefono(e.target.value)}
