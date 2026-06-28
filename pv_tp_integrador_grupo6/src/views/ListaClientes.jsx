@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography ,TextField , Button, CardActions} from '@mui/material';
+import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography ,TextField , Button, CardActions, Dialog} from '@mui/material';
 import '../styles/listaClientes.css';
 import FormularioCliente from '../components/common/FormularioCliente';
 
@@ -76,7 +76,10 @@ const ListaClientes = () => {
           {mostrarFormulario ? "Cancelar Alta" : "Agregar Nuevo Cliente"}
         </Button>
       </Box>
-      {mostrarFormulario && <FormularioCliente />}{/*condicion para saber si mostrar o no el formulario alta*/}
+      {/*{mostrarFormulario && <FormularioCliente />}condicion para saber si mostrar o no el formulario alta*/}
+      <Dialog open={mostrarFormulario} onClose={() => setMostrarFormulario(false)}>
+        <FormularioCliente />
+      </Dialog>
 
       <Box className="contenedor-buscador">
         <TextField
