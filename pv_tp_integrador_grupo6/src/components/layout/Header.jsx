@@ -15,10 +15,16 @@ const Header = () => {
                         Central de Clientes
                     </Typography>
                 </Box>
+
                 {admin && (
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                        <Typography variant="body2">{admin.nombre} ({admin.sector})</Typography>
-                        <Button color="inherit" onClick={logout}>Cerrar Sesión</Button>
+                        <Typography variant="body2" sx={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.85rem' }}>
+                            {admin.nombre} <span style={{ color: '#fff', fontWeight: 'bold' }}>| {admin.sector}</span>
+                        </Typography>
+                        <Button color="inherit" onClick={logout}
+                        sx={{ textTransform: 'none', fontSize: '0.9rem', border: '1px solid rgba(255,255,255,0.3)', px: 2, py: 0.5, '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.1)', borderColor: 'rgba(255, 255, 255, 0.5)' } }}>
+                            Cerrar Sesión
+                        </Button>
                     </Box>
                 )}
             </Toolbar>
