@@ -1,23 +1,26 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography ,TextField , Button, CardActions, Dialog} from '@mui/material';
 import '../styles/listaClientes.css';
 import FormularioCliente from '../components/common/FormularioCliente';
+
 
 const ListaClientes = () => {
 
   const [clientes, setClientes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [busqueda, setBusqueda] = useState('');
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const navigate = useNavigate();
   
-  const [busqueda, setBusqueda] = useState('');//estado para la busqueda
 
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);//estado para mostrar el formulario de alta
+
 
   useEffect(()=>{
     const obtenerClientes = async () => {
       try {
-        setLoading(true);
+
         const respuesta = await fetch('https://fakestoreapi.com/users');
         
         if (!respuesta.ok) {
@@ -67,7 +70,8 @@ const ListaClientes = () => {
         Listado de Clientes
       </Typography>
 
-      <Box sx={{ mb: 3 }}>
+      <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
+        
         <Button 
           variant="contained" 
           color={mostrarFormulario ? "error" : "success"}
@@ -75,6 +79,16 @@ const ListaClientes = () => {
         >
           {mostrarFormulario ? "Cancelar Alta" : "Agregar Nuevo Cliente"}
         </Button>
+
+        {/* ESTE ES EL NUEVO BOTÓN */}
+        <Button 
+          variant="outlined" 
+          color="primary" 
+          onClick={() => navigate(-1)} 
+        >
+          Volver Atrás
+        </Button>
+
       </Box>
       {/*{mostrarFormulario && <FormularioCliente />}condicion para saber si mostrar o no el formulario alta*/}
       <Dialog open={mostrarFormulario} onClose={() => setMostrarFormulario(false)}>
