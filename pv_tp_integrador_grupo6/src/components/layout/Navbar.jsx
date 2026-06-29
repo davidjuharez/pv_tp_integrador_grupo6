@@ -7,7 +7,7 @@ const Nav = () => {
     color: 'black', 
     textDecoration: 'none', 
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif', // Estilo de la fuente
-    fontWeight: '500', // Grosor de la letra (podés usar 'bold' para más gruesa)
+    fontWeight: '500', // Grosor de la letra 
     fontSize: '16px'   // Tamaño de la letra
   };
 
@@ -20,8 +20,7 @@ const Nav = () => {
       {/* 3. Hacemos lo mismo con el link de "Clientes" */}
       <Link to="/clientes" style={estiloLink}>Clientes</Link>
       
-      {/* El link de Login lo dejamos comentado como lo tenías, por las dudas */}
-      {/*<Link to="/login" style={estiloLink}>Login</Link>*/}
+     
       
     </Box>
   );
