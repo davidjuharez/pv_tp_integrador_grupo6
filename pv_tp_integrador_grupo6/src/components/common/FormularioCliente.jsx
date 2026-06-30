@@ -1,13 +1,18 @@
+import { useAdmin } from '../../context/AdminContext';
 import { useState } from 'react';
 import { Box, TextField, Button, Typography, Snackbar, Alert, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import '../../styles/formularioCliente.css';
 
-const FormularioCliente =()=>{
+const FormularioCliente =({ onClienteAgregado, onClose })=>{
+  const {clientes }=useAdmin();//para traer los clientes globales
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [ciudad, setCiudad] = useState('');
+
+  const [calle, setCalle] = useState('');
+  const [numero, setNumero] = useState('');
 
   //estados para la notificación flotante de exito
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -37,8 +42,8 @@ const FormularioCliente =()=>{
       },
       address: {
         city: ciudad,
-        street: 'San Martín',
-        number: 123,
+        street: calle,
+        number: Number(numero),
         zipcode: '5500',
         geolocation: { lat: '-34.6037', long: '-58.3816' }
       },
@@ -59,15 +64,30 @@ const FormularioCliente =()=>{
       }
 
       const datos = await respuesta.json();
-      //la API nos responde con el ID
-      setMensajeExito(`¡Cliente creado con éxito! ID asignado por la API: #${datos.id}`);
+
+      //calculamos un ID único basado en el mas alto de la lista actual
+      //si no hay clientes arranca en 1. Si hay busca el máximo id y le suma 1.
+      const idUnicoLocal = clientes.length > 0 
+        ? Math.max(...clientes.map(c => Number(c.id))) + 1 
+        : 1;
+
+      setMensajeExito(`¡Cliente creado con éxito!`);
       setOpenSnackbar(true);
-      
+      //aqui usamos el idUnicoLocal en lugar de datos.id para que no se pise con los de la API
+      const clienteConId = { ...nuevoCliente, id: idUnicoLocal };
+      onClienteAgregado(clienteConId);
+
       setNombre('');//limpiamos los campos del formulario
       setApellido('');
       setEmail('');
       setTelefono('');
       setCiudad('');
+      setCalle('');
+      setNumero('');
+      setTimeout(()=>{//tiempo para que se vea el mensaje por pantalla antes de rederigir
+        onClose();
+      },1500);
+      
     } catch (error) {
       alert('Hubo un error: ' + error.message);
     }
@@ -111,6 +131,25 @@ const FormularioCliente =()=>{
           value={telefono}
           onChange={(e) => setTelefono(e.target.value)}
         />
+
+        <TextField
+          label="Calle"
+          variant="outlined"
+          required
+          value={calle}
+          onChange={(e) => setCalle(e.target.value)}
+        />
+
+        <TextField
+          label="Número"
+          variant="outlined"
+          type="number"
+          required
+          value={numero}
+          onChange={(e) => setNumero(e.target.value)}
+        />
+
+
         <FormControl fullWidth variant="outlined" required>
           <InputLabel id="select-ciudad-label">Ciudad</InputLabel>
           <Select
