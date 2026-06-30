@@ -11,6 +11,9 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
   const [telefono, setTelefono] = useState('');
   const [ciudad, setCiudad] = useState('');
 
+  const [calle, setCalle] = useState('');
+  const [numero, setNumero] = useState('');
+
   //estados para la notificación flotante de exito
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [mensajeExito, setMensajeExito] = useState('');
@@ -39,8 +42,8 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
       },
       address: {
         city: ciudad,
-        street: 'San Martín',
-        number: 123,
+        street: calle,
+        number: Number(numero),
         zipcode: '5500',
         geolocation: { lat: '-34.6037', long: '-58.3816' }
       },
@@ -60,13 +63,6 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
         throw new Error('Error al registrar el cliente en el servidor');
       }
 
-      /*const datos = await respuesta.json();
-      //la API nos responde con el ID
-      setMensajeExito(`¡Cliente creado con éxito! ID asignado por la API: #${datos.id}`);
-      setOpenSnackbar(true);
-      
-      const clienteConId = { ...nuevoCliente, id: datos.id };
-      onClienteAgregado(clienteConId);*/
       const datos = await respuesta.json();
 
       //calculamos un ID único basado en el mas alto de la lista actual
@@ -75,7 +71,7 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
         ? Math.max(...clientes.map(c => Number(c.id))) + 1 
         : 1;
 
-      setMensajeExito(`¡Cliente creado con éxito! (ID Local único: #${idUnicoLocal})`);
+      setMensajeExito(`¡Cliente creado con éxito!`);
       setOpenSnackbar(true);
       //aqui usamos el idUnicoLocal en lugar de datos.id para que no se pise con los de la API
       const clienteConId = { ...nuevoCliente, id: idUnicoLocal };
@@ -86,6 +82,12 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
       setEmail('');
       setTelefono('');
       setCiudad('');
+      setCalle('');
+      setNumero('');
+      setTimeout(()=>{//tiempo para que se vea el mensaje por pantalla antes de rederigir
+        onClose();
+      },1500);
+      
     } catch (error) {
       alert('Hubo un error: ' + error.message);
     }
@@ -129,6 +131,25 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
           value={telefono}
           onChange={(e) => setTelefono(e.target.value)}
         />
+
+        <TextField
+          label="Calle"
+          variant="outlined"
+          required
+          value={calle}
+          onChange={(e) => setCalle(e.target.value)}
+        />
+
+        <TextField
+          label="Número"
+          variant="outlined"
+          type="number"
+          required
+          value={numero}
+          onChange={(e) => setNumero(e.target.value)}
+        />
+
+
         <FormControl fullWidth variant="outlined" required>
           <InputLabel id="select-ciudad-label">Ciudad</InputLabel>
           <Select
