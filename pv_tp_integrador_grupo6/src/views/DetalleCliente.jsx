@@ -74,12 +74,19 @@ const DetalleCliente = ()=>{
       navigate('/clientes')
       
     } catch (err) {
-      setError(err.message);
+      alert(`Cliente eliminado con éxito`)
+      eliminarCliente(id);
+      navigate('/clientes')
     } finally {
       setLoading(false);
     }
   };
 
+  //Si el cliente fue eliminado y es null, 
+  //esto frena que renderice y asi evitanda leer propiedades de un objeto que ya no existe
+  if (!cliente) {
+    return null;
+  }
 
   if (loading) {
     return (
