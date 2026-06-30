@@ -9,7 +9,7 @@ import { useAdmin } from '../context/AdminContext';
 const DetalleCliente = ()=>{
   const { id } = useParams();
 
-  const { admin, eliminarCliente } = useAdmin();
+  const { admin, eliminarCliente, clientes } = useAdmin();
 
   const navigate = useNavigate();
 
@@ -21,6 +21,8 @@ const DetalleCliente = ()=>{
     const obtenerCliente= async () => {
       try {
         setLoading(true);
+        setError(null);//para limpiar errores previos
+
         const respuesta = await fetch(`https://fakestoreapi.com/users/${id}`);
         
         if (!respuesta.ok) {
@@ -28,16 +30,28 @@ const DetalleCliente = ()=>{
         }
 
         const datos = await respuesta.json();
+        //si la API devuelve un objeto vacío o null
+        if (!datos || Object.keys(datos).length === 0) {
+          throw new Error('Cliente inexistente en servidor');
+        }
         setCliente(datos);
       } catch (err) {
-        setError(err.message);
+        // si la API falla o no existe el ID, buscamos en el estado global
+        const clienteLocal=clientes.find(c=>c.id=== Number(id))
+        if(clienteLocal){
+          //si lo encuentra guardamos el cliente en el estado
+          setCliente(clienteLocal);
+        }else{
+          //si tampoco esta en el local, recien mostramos el error en pantalla
+          setError('No se pudo obtener el detalle del cliente en ningún origen.');
+        }
       } finally {
         setLoading(false);
       }
     };
 
     obtenerCliente();
-  }, [id]);
+  }, [id, clientes]);
 
   const manejarEliminar = async () => {
     const confirmar = window.confirm("¿Estás seguro de que deseas eliminar este cliente?");

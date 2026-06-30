@@ -1,8 +1,10 @@
+import { useAdmin } from '../../context/AdminContext';
 import { useState } from 'react';
 import { Box, TextField, Button, Typography, Snackbar, Alert, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import '../../styles/formularioCliente.css';
 
 const FormularioCliente =({ onClienteAgregado, onClose })=>{
+  const {clientes }=useAdmin();//para traer los clientes globales
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [email, setEmail] = useState('');
@@ -58,12 +60,25 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
         throw new Error('Error al registrar el cliente en el servidor');
       }
 
-      const datos = await respuesta.json();
+      /*const datos = await respuesta.json();
       //la API nos responde con el ID
       setMensajeExito(`¡Cliente creado con éxito! ID asignado por la API: #${datos.id}`);
       setOpenSnackbar(true);
       
       const clienteConId = { ...nuevoCliente, id: datos.id };
+      onClienteAgregado(clienteConId);*/
+      const datos = await respuesta.json();
+
+      //calculamos un ID único basado en el mas alto de la lista actual
+      //si no hay clientes arranca en 1. Si hay busca el máximo id y le suma 1.
+      const idUnicoLocal = clientes.length > 0 
+        ? Math.max(...clientes.map(c => Number(c.id))) + 1 
+        : 1;
+
+      setMensajeExito(`¡Cliente creado con éxito! (ID Local único: #${idUnicoLocal})`);
+      setOpenSnackbar(true);
+      //aqui usamos el idUnicoLocal en lugar de datos.id para que no se pise con los de la API
+      const clienteConId = { ...nuevoCliente, id: idUnicoLocal };
       onClienteAgregado(clienteConId);
 
       setNombre('');//limpiamos los campos del formulario
