@@ -6,6 +6,10 @@ export const AdminProvider = ({ children }) => {
     const [admin, setAdmin] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [clientes, setClientes] =useState([]);
+    const [cargandoClientes, setCargandoClientes]= useState(true);
+    const [errorClientes, setErrorClientes] =useState(null);
+
     useEffect(() => {
         const session = localStorage.getItem("adminSession");
         if (session) {
@@ -26,7 +30,19 @@ export const AdminProvider = ({ children }) => {
     };
 
     return (
-        <AdminContext.Provider value={{ admin, login, logout, isAuthenticated: !!admin, isLoading }}>
+        <AdminContext.Provider value={{ 
+            admin,
+            login, 
+            logout,       
+            isAuthenticated: !!admin,
+             isLoading,
+            clientes,
+            setClientes,
+            cargandoClientes,
+            setCargandoClientes,
+            errorClientes,
+            setErrorClientes
+         }}>
             {children}
         </AdminContext.Provider>
     );

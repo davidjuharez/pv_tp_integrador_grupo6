@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Box, TextField, Button, Typography, Snackbar, Alert, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import '../../styles/formularioCliente.css';
 
-const FormularioCliente =()=>{
+const FormularioCliente =({ onClienteAgregado, onClose })=>{
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [email, setEmail] = useState('');
@@ -63,6 +63,9 @@ const FormularioCliente =()=>{
       setMensajeExito(`¡Cliente creado con éxito! ID asignado por la API: #${datos.id}`);
       setOpenSnackbar(true);
       
+      const clienteConId = { ...nuevoCliente, id: datos.id };
+      onClienteAgregado(clienteConId);
+
       setNombre('');//limpiamos los campos del formulario
       setApellido('');
       setEmail('');

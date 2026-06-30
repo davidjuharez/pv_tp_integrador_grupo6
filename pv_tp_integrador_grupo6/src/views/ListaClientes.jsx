@@ -1,26 +1,37 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Box, CircularProgress, Alert, Grid, Card, CardContent, Typography ,TextField , Button, CardActions, Dialog} from '@mui/material';
+import { useAdmin } from '../context/AdminContext';
 import '../styles/listaClientes.css';
 import FormularioCliente from '../components/common/FormularioCliente';
 
 
 const ListaClientes = () => {
 
-  const [clientes, setClientes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const {//trae los estados globales del contexto
+    clientes,
+    setClientes,
+    cargandoClientes,
+    setCargandoClientes,
+    errorClientes,
+    setErrorClientes
+  } = useAdmin();
+
+
   const [busqueda, setBusqueda] = useState('');
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const navigate = useNavigate();
   
 
-
-
   useEffect(()=>{
     const obtenerClientes = async () => {
-      try {
 
+      if (clientes.length > 0) {
+        setCargandoClientes(false);
+        return;
+      }
+      try {
+        setCargandoClientes(true);
         const respuesta = await fetch('https://fakestoreapi.com/users');
         
         if (!respuesta.ok) {
@@ -32,12 +43,12 @@ const ListaClientes = () => {
       } catch (err) {
         setError(err.message);
       } finally {
-        setLoading(false);
+        setCargandoClientes(false);
       }
     };
 
     obtenerClientes();
-  }, []);
+  }, [clientes.length, setClientes, setCargandoClientes, setErrorClientes]);
 
   //filtro de clientes por apellido o ciudad
   const clientesFiltrados = clientes.filter((cliente) => {
@@ -48,7 +59,7 @@ const ListaClientes = () => {
     return apellido.includes(termino) || ciudad.includes(termino);
   });
 
-  if (loading) {
+  if (cargandoClientes) {
     return (
       <Box className="loading-container">
         <CircularProgress />
@@ -56,13 +67,16 @@ const ListaClientes = () => {
     );
   }
 
-  if (error) {
+  if (errorClientes) {
     return (
       <Box className="error-container">
-        <Alert severity="error">{error}</Alert>
+        <Alert severity="error">{errorClientes}</Alert>
       </Box>
     );
   }
+  const agregarCliente = (nuevoCliente) =>{
+    setClientes((prevClientes) => [nuevoCliente, ...prevClientes]);
+  };
 
   return (
     <Box className="contenedor-clientes">
@@ -92,7 +106,10 @@ const ListaClientes = () => {
       </Box>
       {/*{mostrarFormulario && <FormularioCliente />}condicion para saber si mostrar o no el formulario alta*/}
       <Dialog open={mostrarFormulario} onClose={() => setMostrarFormulario(false)}>
-        <FormularioCliente />
+        <FormularioCliente 
+        onClienteAgregado={agregarCliente}
+        onClose={()=>setMostrarFormulario(false)}
+        />
       </Dialog>
 
       <Box className="contenedor-buscador">
