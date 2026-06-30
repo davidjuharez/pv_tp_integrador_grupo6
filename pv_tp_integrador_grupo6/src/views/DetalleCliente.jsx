@@ -8,7 +8,8 @@ import { useAdmin } from '../context/AdminContext';
 
 const DetalleCliente = ()=>{
   const { id } = useParams();
-  const { admin } = useAdmin();
+
+  const { admin, eliminarCliente } = useAdmin();
 
   const navigate = useNavigate();
 
@@ -54,6 +55,8 @@ const DetalleCliente = ()=>{
 
       const datos = await respuesta.json();
       alert(`¡Cliente eliminado con éxito! Datos del usuario borrado: ${datos.username}`);
+
+      eliminarCliente(id);
       navigate('/clientes')
       
     } catch (err) {

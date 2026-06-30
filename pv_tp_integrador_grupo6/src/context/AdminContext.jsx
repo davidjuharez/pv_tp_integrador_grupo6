@@ -28,6 +28,13 @@ export const AdminProvider = ({ children }) => {
         setAdmin(null);
         localStorage.removeItem("adminSession");
     };
+    //para remover el cliente localmente por ID
+    const eliminarCliente = (idParaEliminar) => {
+        //filtramos el arreglo
+        setClientes((clientesPrevios) => 
+            clientesPrevios.filter((cliente) => cliente.id !== Number(idParaEliminar))
+        );
+    };
 
     return (
         <AdminContext.Provider value={{ 
@@ -41,7 +48,8 @@ export const AdminProvider = ({ children }) => {
             cargandoClientes,
             setCargandoClientes,
             errorClientes,
-            setErrorClientes
+            setErrorClientes,
+            eliminarCliente
          }}>
             {children}
         </AdminContext.Provider>
