@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button, Paper, Container, MenuItem } from '@mui/material';
 import logo from '../assets/logo.png';
 import fondoLogin from '../assets/fondoLogin.png';
+import LoginIcon from "@mui/icons-material/Login";
 
 const Login = () => {
     const [form, setForm] = useState({ nombre: '', sector: '' });
@@ -30,16 +31,18 @@ const Login = () => {
                 </Box>
                 <Typography variant="h6" align="center" sx={{ mb: 0.5, fontWeight: 700, color: "#d6e4f0" }}>Acceso</Typography>
                 <Typography align="center" sx={{ mb: 2, color: "#d6e4f0", fontSize: "0.75rem" }}>Central de Clientes</Typography>
-                
+
                 <form onSubmit={handleSubmit}>
-                    <TextField fullWidth label="Nombre" name="nombre" onChange={handleChange} margin="normal" required 
-                    sx={{ '& .MuiOutlinedInput-root': { bgcolor: 'rgba(255, 255, 255, 0.15)' }, '& .MuiInputLabel-root': { color: '#aabbce' }, '& .MuiInputBase-input': { color: '#ffffff' } }} />
+                    <TextField fullWidth label="Nombre" name="nombre" onChange={handleChange} margin="normal" required
+                        sx={{ '& .MuiOutlinedInput-root': { bgcolor: 'rgba(255, 255, 255, 0.15)' }, '& .MuiInputLabel-root': { color: '#aabbce' }, '& .MuiInputBase-input': { color: '#ffffff' } }} />
                     <TextField fullWidth select label="Sector" name="sector" value={form.sector} onChange={handleChange} margin="normal" required
-                    sx={{ '& .MuiOutlinedInput-root': { bgcolor: 'rgba(255, 255, 255, 0.15)' }, '& .MuiInputLabel-root': { color: '#aabbce' }, '& .MuiInputBase-input': { color: '#ffffff' } }} >
+                        sx={{ '& .MuiOutlinedInput-root': { bgcolor: 'rgba(255, 255, 255, 0.15)' }, '& .MuiInputLabel-root': { color: '#aabbce' }, '& .MuiInputBase-input': { color: '#ffffff' } }} >
                         <MenuItem value="Soporte">Soporte</MenuItem>
                         <MenuItem value="Gerencia">Gerencia</MenuItem>
                     </TextField>
-                    <Button fullWidth variant="contained" type="submit" sx={{ mt: 3, bgcolor: '#03264e' }}>Ingresar</Button>
+                    <Button fullWidth variant="contained" type="submit" startIcon={<LoginIcon />} sx={{ mt: 2, bgcolor: "#03264e", py: 1, borderRadius: 1.5, fontSize: "0.9rem", '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.1)', borderColor: 'rgba(255, 255, 255, 0.5)' }, border: '1px solid rgba(255,255,255,0.3)' }}>
+                        Ingresar
+                    </Button>
                 </form>
             </Paper>
 
