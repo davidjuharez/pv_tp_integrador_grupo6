@@ -28,10 +28,14 @@ const Login = () => {
                 <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
                     <Box component="img" src={logo} alt="Logo" sx={{ width: 60, height: 60 }} />
                 </Box>
-                <Typography variant="h5" align="center" sx={{ mb: 3 }}>Acceso</Typography>
+                <Typography variant="h6" align="center" sx={{ mb: 0.5, fontWeight: 700, color: "#d6e4f0" }}>Acceso</Typography>
+                <Typography align="center" sx={{ mb: 2, color: "#d6e4f0", fontSize: "0.75rem" }}>Central de Clientes</Typography>
+                
                 <form onSubmit={handleSubmit}>
-                    <TextField fullWidth label="Nombre" name="nombre" onChange={handleChange} margin="normal" required />
-                    <TextField fullWidth select label="Sector" name="sector" value={form.sector} onChange={handleChange} margin="normal" required>
+                    <TextField fullWidth label="Nombre" name="nombre" onChange={handleChange} margin="normal" required 
+                    sx={{ '& .MuiOutlinedInput-root': { bgcolor: 'rgba(255, 255, 255, 0.15)' }, '& .MuiInputLabel-root': { color: '#aabbce' }, '& .MuiInputBase-input': { color: '#ffffff' } }} />
+                    <TextField fullWidth select label="Sector" name="sector" value={form.sector} onChange={handleChange} margin="normal" required
+                    sx={{ '& .MuiOutlinedInput-root': { bgcolor: 'rgba(255, 255, 255, 0.15)' }, '& .MuiInputLabel-root': { color: '#aabbce' }, '& .MuiInputBase-input': { color: '#ffffff' } }} >
                         <MenuItem value="Soporte">Soporte</MenuItem>
                         <MenuItem value="Gerencia">Gerencia</MenuItem>
                     </TextField>
