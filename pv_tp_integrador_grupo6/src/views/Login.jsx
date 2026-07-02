@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useAdmin } from "../context/AdminContext";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography, TextField, Button, Paper, Container, MenuItem } from '@mui/material';
+import logo from '../assets/logo.png';
+import fondoLogin from '../assets/fondoLogin.png';
 
 const Login = () => {
     const [form, setForm] = useState({ nombre: '', sector: '' });
@@ -21,6 +23,7 @@ const Login = () => {
     };
 
     return (
+        <Box sx={{ minHeight: "100vh", backgroundImage: `url(${fondoLogin})`, backgroundSize: "cover", backgroundPosition: "center", display: "flex", justifyContent: "center", alignItems: "center", p: 2 }}>
         <Container maxWidth="xs" sx={{ mt: 8 }}>
             <Paper elevation={3} sx={{ p: 4 }}>
                 <Typography variant="h5" align="center" sx={{ mb: 3 }}>Acceso</Typography>
@@ -34,6 +37,7 @@ const Login = () => {
                 </form>
             </Paper>
         </Container>
+        </Box>
     );
 };
 
