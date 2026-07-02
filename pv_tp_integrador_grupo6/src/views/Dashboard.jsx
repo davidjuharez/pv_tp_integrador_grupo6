@@ -4,8 +4,8 @@ import PeopleIcon from '@mui/icons-material/People';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import fondoLogin from '../assets/fondoLogin.png';
 import UpdateIcon from '@mui/icons-material/Update';
-//import graficoActividadImg from '../assets/grafico-actividad.png';
-//import mapaMundiImg from '../assets/mapa-mundi.png';
+import graficoActividadImg from '../assets/grafico-actividad.png';
+import mapaMundiImg from '../assets/mapa-mundi.png';
 
 const Dashboard = () => {
   const { admin } = useAdmin();
@@ -25,7 +25,7 @@ const Dashboard = () => {
         {/* Tarjetas */}
         <Grid container spacing={3} alignItems="stretch">
           <Grid item xs={12} md={4} sx={{ display: 'flex' }}>
-            <Card elevation={3} sx={{ borderRadius: 3,  bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', color: '#fff', height: '130px', width: '360px', border: '3px solid rgba(255, 255, 255, 0.2)' }}>
+            <Card elevation={3} sx={{ borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', color: '#fff', height: '130px', width: '360px', border: '3px solid rgba(255, 255, 255, 0.2)' }}>
               <CardContent sx={{ p: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <CloudQueueIcon sx={{ fontSize: 55, color: '#64b5f6', flexShrink: 0 }} />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -64,7 +64,26 @@ const Dashboard = () => {
           </Grid>
         </Grid>
 
-        
+        <Grid container spacing={3} sx={{ mt: 3, alignItems: 'stretch' }}>
+          {/* Card del Gráfico */}
+          <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+            <Paper sx={{ p: 2, borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', border: '3px solid rgba(255, 255, 255, 0.2)', width: '100%', display: 'flex', flexDirection: 'column' }}>
+              <Typography variant="h6" sx={{ color: '#fff', mb: 2 }}>Clientes registrados por región</Typography>
+              <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src={graficoActividadImg} alt="Gráfico de actividad" style={{ width: '100%', maxHeight: '350px', borderRadius: '8px', objectFit: 'contain' }} />
+              </Box>
+            </Paper>
+          </Grid>
+          {/* Card del Mapa */}
+          <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
+            <Paper sx={{ p: 2, borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', border: '3px solid rgba(255, 255, 255, 0.2)', width: '100%', display: 'flex', flexDirection: 'column' }}>
+              <Typography variant="h6" sx={{ color: '#fff', mb: 2 }}>Conectividad Global Activa</Typography>
+              <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src={mapaMundiImg} alt="Mapa mundial" style={{ width: '100%', maxHeight: '350px', borderRadius: '8px', objectFit: 'contain' }} />
+              </Box>
+            </Paper>
+          </Grid>
+        </Grid>
 
         {/* 3. Aviso inferior */}
         <Alert severity="info" sx={{ mt: 6, borderRadius: 2, p: 2 }}>
