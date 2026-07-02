@@ -24,8 +24,10 @@ const Login = () => {
 
     return (
         <Box sx={{ minHeight: "100vh", backgroundImage: `url(${fondoLogin})`, backgroundSize: "cover", backgroundPosition: "center", display: "flex", justifyContent: "center", alignItems: "center", p: 2 }}>
-
             <Paper elevation={4} sx={{ p: 3, width: "100%", maxWidth: 320, borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', border: '3px solid rgba(255, 255, 255, 0.2)', color: '#ffffff' }}>
+                <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
+                    <Box component="img" src={logo} alt="Logo" sx={{ width: 60, height: 60 }} />
+                </Box>
                 <Typography variant="h5" align="center" sx={{ mb: 3 }}>Acceso</Typography>
                 <form onSubmit={handleSubmit}>
                     <TextField fullWidth label="Nombre" name="nombre" onChange={handleChange} margin="normal" required />
