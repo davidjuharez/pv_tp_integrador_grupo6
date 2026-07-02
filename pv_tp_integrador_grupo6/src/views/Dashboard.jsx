@@ -85,10 +85,13 @@ const Dashboard = () => {
           </Grid>
         </Grid>
 
-        {/* 3. Aviso inferior */}
-        <Alert severity="info" sx={{ mt: 6, borderRadius: 2, p: 2 }}>
-          <strong>Nota de acceso:</strong> El sector {admin?.sector} tiene permisos configurados de forma restringida.
-        </Alert>
+        <Grid item xs={12}>
+          <Box sx={{ mt: 4 }}>
+            <Alert severity="info" sx={{ borderRadius: 3, p: 2, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', border: '3px solid rgba(255, 255, 255, 0.2)', color: '#ffffff', '& .MuiAlert-icon': { color: '#2196f3' } }}>
+              <strong>Nota de acceso:</strong> El sector {admin?.sector} tiene permisos configurados de forma restringida.
+            </Alert>
+          </Box>
+        </Grid>
       </Container>
     </Box>
   );
