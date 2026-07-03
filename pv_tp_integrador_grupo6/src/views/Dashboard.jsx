@@ -11,7 +11,12 @@ const Dashboard = () => {
   const { admin } = useAdmin();
 
   return (
-    <Box sx={{ backgroundImage: `url(${fondoLogin})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', width: '100vw', position: 'relative', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw', marginTop: '-24px', marginBottom: '-24px', paddingTop: '24px', paddingBottom: '24px' }}>
+    <Box sx={{ backgroundImage: `url(${fondoLogin})`, 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center', 
+      minHeight: '100vh', 
+      width: '100%',
+      py: 4 }}>
       <Container maxWidth="lg" sx={{ mt: 5, mb: 5 }}>
         <Card elevation={3} sx={{ mb: 6 }}>
           <CardContent>

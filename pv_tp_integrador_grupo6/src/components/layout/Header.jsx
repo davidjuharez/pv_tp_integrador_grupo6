@@ -7,7 +7,13 @@ const Header = () => {
     const { admin, logout } = useAdmin();
 
     return (
-        <AppBar position="static" sx={{ bgcolor: '#03264e', boxShadow: 'none', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+        <AppBar position="static" 
+            sx={{ 
+                bgcolor: 'rgba(3, 38, 78, 0.4)', 
+                backdropFilter: 'blur(8px)',     
+                boxShadow: 'none', 
+                border: 'none !important' 
+            }}>
             <Toolbar>
                 <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, gap: 1.5 }}>
                     <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
