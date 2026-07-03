@@ -1,6 +1,7 @@
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { useAdmin } from '../../context/AdminContext';
 import logo from '../../assets/logo.png';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 
 const Header = () => {
@@ -28,6 +29,7 @@ const Header = () => {
                             {admin.nombre} <span style={{ color: '#fff', fontWeight: 'bold' }}>| {admin.sector}</span>
                         </Typography>
                         <Button color="inherit" onClick={logout}
+                        startIcon={<LogoutIcon />}
                         sx={{ textTransform: 'none', fontSize: '0.9rem', border: '1px solid rgba(255,255,255,0.3)', px: 2, py: 0.5, '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.1)', borderColor: 'rgba(255, 255, 255, 0.5)' } }}>
                             Cerrar Sesión
                         </Button>
