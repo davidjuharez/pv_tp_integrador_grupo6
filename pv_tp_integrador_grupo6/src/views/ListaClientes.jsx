@@ -41,7 +41,7 @@ const ListaClientes = () => {
         const datos = await respuesta.json();
         setClientes(datos);
       } catch (err) {
-        setError(err.message);
+        setErrorClientes(err.message);
       } finally {
         setCargandoClientes(false);
       }

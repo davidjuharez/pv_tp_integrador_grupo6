@@ -1,48 +1,59 @@
-/*contenedor para centrar el logo de carga*/
-.loading-container{
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-}
-/*para la alerta de error */
-.error-container {
-  margin-top: 16px;
-  padding: 16px;
+/* Contenedor principal de la pantalla: le aplicamos el mismo fondo que al Dashboard */
+.contenedor-clientes {
+  background-image: url('../assets/fondoLogin.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 32px;
 }
 
-/*este es el contenedor principal de la pantalla*/
-.contenedor-clientes {
-  padding: 24px;
-  /*max-width: 1200px;*/
-  margin: 0 auto;
-}
-/*el titulo de la sección */
+/* El título de la sección en un color celeste claro amigable */
 .titulo-seccion {
   margin-bottom: 24px !important;
-  font-weight: 600 !important;
-  color: #1976d2;
+  font-weight: 800 !important;
+  color: #d6e4f0 !important;
 }
-/*la tarjeta de cada cliente */
+
+/* La tarjeta de cada cliente (mantiene tu hover, el vidrio viene del tema) */
 .tarjeta-cliente {
   height: 100%;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border-radius: 8px !important;
-}
-/*efectos*/
-.tarjeta-cliente:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
-}
-.nombre-cliente {
-  margin-bottom: 12px !important;
-  color: #333333;
-  text-transform: capitalize; /* Pone la primera letra en mayúscula automáticamente */
-}
-.info-cliente {
-  margin-bottom: 6px !important;
-  color: #555555;
 }
 
+.tarjeta-cliente:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Estilos de los textos internos adaptados al modo oscuro */
+.nombre-cliente {
+  margin-bottom: 12px !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-transform: capitalize;
+}
+
+.info-cliente {
+  margin-bottom: 6px !important;
+  color: #aabbce !important; /* Gris azulado muy legible */
+}
+
+/* Buscador y contenedores de carga/error */
 .contenedor-buscador {
   margin-bottom: 32px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../assets/fondoLogin.png');
+  background-size: cover;
+}
+
+.error-container {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
 }
