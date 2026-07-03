@@ -25,7 +25,7 @@ const Login = () => {
 
     return (
         <Box sx={{ minHeight: "100vh", backgroundImage: `url(${fondoLogin})`, backgroundSize: "cover", backgroundPosition: "center", display: "flex", justifyContent: "center", alignItems: "center", p: 2 }}>
-            <Paper elevation={4} sx={{ p: 3, width: "100%", maxWidth: 320, borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', border: '3px solid rgba(255, 255, 255, 0.2)', color: '#ffffff' }}>
+            <Paper elevation={4} sx={{ p: 3, width: "100%", maxWidth: 320}}>
                 <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
                     <Box component="img" src={logo} alt="Logo" sx={{ width: 60, height: 60 }} />
                 </Box>
@@ -33,10 +33,8 @@ const Login = () => {
                 <Typography align="center" sx={{ mb: 2, color: "#d6e4f0", fontSize: "0.75rem" }}>Central de Clientes</Typography>
 
                 <form onSubmit={handleSubmit}>
-                    <TextField fullWidth label="Nombre" name="nombre" onChange={handleChange} margin="normal" required
-                        sx={{ '& .MuiOutlinedInput-root': { bgcolor: 'rgba(255, 255, 255, 0.15)' }, '& .MuiInputLabel-root': { color: '#aabbce' }, '& .MuiInputBase-input': { color: '#ffffff' } }} />
-                    <TextField fullWidth select label="Sector" name="sector" value={form.sector} onChange={handleChange} margin="normal" required
-                        sx={{ '& .MuiOutlinedInput-root': { bgcolor: 'rgba(255, 255, 255, 0.15)' }, '& .MuiInputLabel-root': { color: '#aabbce' }, '& .MuiInputBase-input': { color: '#ffffff' } }} >
+                    <TextField fullWidth label="Nombre" name="nombre" onChange={handleChange} margin="normal" required/>
+                    <TextField fullWidth select label="Sector" name="sector" value={form.sector} onChange={handleChange} margin="normal" required>
                         <MenuItem value="Soporte">Soporte</MenuItem>
                         <MenuItem value="Gerencia">Gerencia</MenuItem>
                     </TextField>

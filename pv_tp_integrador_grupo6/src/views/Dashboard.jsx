@@ -13,7 +13,7 @@ const Dashboard = () => {
   return (
     <Box sx={{ backgroundImage: `url(${fondoLogin})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh', width: '100vw', position: 'relative', left: '50%', right: '50%', marginLeft: '-50vw', marginRight: '-50vw', marginTop: '-24px', marginBottom: '-24px', paddingTop: '24px', paddingBottom: '24px' }}>
       <Container maxWidth="lg" sx={{ mt: 5, mb: 5 }}>
-        <Card elevation={3} sx={{ mb: 6, borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', border: '3px solid rgba(255, 255, 255, 0.2)' }}>
+        <Card elevation={3} sx={{ mb: 6 }}>
           <CardContent>
             <Box sx={{ textAlign: 'left', pb: 2 }}>
               <Typography variant="h4" sx={{ fontWeight: 800, color: '#d6e4f0' }}>Panel de Cliente</Typography>
@@ -25,7 +25,7 @@ const Dashboard = () => {
         {/* Tarjetas */}
         <Grid container spacing={3} alignItems="stretch">
           <Grid item xs={12} md={4} sx={{ display: 'flex' }}>
-            <Card elevation={3} sx={{ borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', color: '#fff', height: '130px', width: '360px', border: '3px solid rgba(255, 255, 255, 0.2)' }}>
+            <Card elevation={3} sx={{ height: '130px', width: '360px' }}>
               <CardContent sx={{ p: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <CloudQueueIcon sx={{ fontSize: 55, color: '#64b5f6', flexShrink: 0 }} />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -38,7 +38,7 @@ const Dashboard = () => {
           </Grid>
 
           <Grid item xs={12} md={4} sx={{ display: 'flex' }}>
-            <Card elevation={3} sx={{ borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', color: '#fff', height: '130px', width: '360px', border: '3px solid rgba(255, 255, 255, 0.2)' }}>
+            <Card elevation={3} sx={{ height: '130px', width: '360px' }}>
               <CardContent sx={{ p: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <PeopleIcon sx={{ fontSize: 55, color: '#64b5f6', flexShrink: 0 }} />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -51,7 +51,7 @@ const Dashboard = () => {
           </Grid>
 
           <Grid item xs={12} md={4} sx={{ display: 'flex' }}>
-            <Card elevation={3} sx={{ borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', color: '#fff', height: '130px', width: '360px', border: '3px solid rgba(255, 255, 255, 0.2)' }}>
+            <Card elevation={3} sx={{ height: '130px', width: '360px'}}>
               <CardContent sx={{ p: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <UpdateIcon sx={{ fontSize: 55, color: '#64b5f6', flexShrink: 0 }} />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -67,7 +67,7 @@ const Dashboard = () => {
         <Grid container spacing={3} sx={{ mt: 3, alignItems: 'stretch' }}>
           {/* Card del Gráfico */}
           <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-            <Paper sx={{ p: 2, borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', border: '3px solid rgba(255, 255, 255, 0.2)', width: '100%', display: 'flex', flexDirection: 'column' }}>
+            <Paper sx={{ p: 2, width: '100%', display: 'flex', flexDirection: 'column' }}>
               <Typography variant="h6" sx={{ color: '#fff', mb: 2 }}>Clientes registrados por región</Typography>
               <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img src={graficoActividadImg} alt="Gráfico de actividad" style={{ width: '100%', maxHeight: '350px', borderRadius: '8px', objectFit: 'contain' }} />
@@ -76,7 +76,7 @@ const Dashboard = () => {
           </Grid>
           {/* Card del Mapa */}
           <Grid item xs={12} md={6} sx={{ display: 'flex' }}>
-            <Paper sx={{ p: 2, borderRadius: 3, bgcolor: 'rgba(3, 38, 78, 0.4)', backdropFilter: 'blur(8px)', border: '3px solid rgba(255, 255, 255, 0.2)', width: '100%', display: 'flex', flexDirection: 'column' }}>
+            <Paper sx={{ p: 2, width: '100%', display: 'flex', flexDirection: 'column' }}>
               <Typography variant="h6" sx={{ color: '#fff', mb: 2 }}>Conectividad Global Activa</Typography>
               <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img src={mapaMundiImg} alt="Mapa mundial" style={{ width: '100%', maxHeight: '350px', borderRadius: '8px', objectFit: 'contain' }} />
