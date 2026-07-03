@@ -1,13 +1,13 @@
-/* Limpiamos los márgenes por defecto del navegador y ponemos el fondo oscuro definitivo */
+
 html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #021831; /* El mismo azul oscuro del Layout */
+  background-color: #021831;
   color: #ffffff;
   min-height: 100vh;
   width: 100%;
-  overflow-x: hidden; /* Evita que la pantalla se mueva de costado */
+  overflow-x: hidden; 
 }
 
 #root {
