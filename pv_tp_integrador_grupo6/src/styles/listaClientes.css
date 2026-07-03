@@ -1,48 +1,59 @@
-/*contenedor para centrar el logo de carga*/
-.loading-container{
-  display: flex;
-  justify-content: center;
-  margin-top: 32px;
-}
-/*para la alerta de error */
-.error-container {
-  margin-top: 16px;
-  padding: 16px;
+
+.contenedor-clientes {
+  background-image: url('../assets/fondoLogin.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 32px;
 }
 
-/*este es el contenedor principal de la pantalla*/
-.contenedor-clientes {
-  padding: 24px;
-  /*max-width: 1200px;*/
-  margin: 0 auto;
-}
-/*el titulo de la sección */
+
 .titulo-seccion {
   margin-bottom: 24px !important;
-  font-weight: 600 !important;
-  color: #1976d2;
+  font-weight: 800 !important;
+  color: #d6e4f0 !important;
 }
-/*la tarjeta de cada cliente */
+
+
 .tarjeta-cliente {
   height: 100%;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border-radius: 8px !important;
 }
-/*efectos*/
+
 .tarjeta-cliente:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
 }
+
+
 .nombre-cliente {
   margin-bottom: 12px !important;
-  color: #333333;
-  text-transform: capitalize; /* Pone la primera letra en mayúscula automáticamente */
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-transform: capitalize;
 }
+
 .info-cliente {
   margin-bottom: 6px !important;
-  color: #555555;
+  color: #aabbce !important; 
 }
+
 
 .contenedor-buscador {
   margin-bottom: 32px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../assets/fondoLogin.png');
+  background-size: cover;
+}
+
+.error-container {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
 }

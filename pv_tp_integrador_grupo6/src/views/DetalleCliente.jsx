@@ -5,6 +5,7 @@ import { Box, CircularProgress, Alert, Typography, Button, Card, CardContent, Ic
 // 2. Importamos el ícono de la cruz
 import CloseIcon from '@mui/icons-material/Close';
 import { useAdmin } from '../context/AdminContext';
+import '../styles/detalleCliente.css';
 
 const DetalleCliente = ()=>{
   const { id } = useParams();
@@ -105,18 +106,10 @@ const DetalleCliente = ()=>{
   }
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', p: 4, width: '100%' }}>
+    <Box className="contenedor-detalle-cliente">
       
       <Card 
-        sx={{ 
-          maxWidth: 600, 
-          width: '100%', 
-          borderRadius: 4, 
-          border: '1px solid #90caf9', 
-          boxShadow: '0px 10px 30px rgba(3, 38, 78, 0.25)',
-          p: 2,
-          position: 'relative' // IMPORTANTE: Esto permite ubicar la cruz libremente adentro de la tarjeta
-        }}
+        className="tarjeta-detalle"
       >
         
         {/* 3. ACÁ ESTÁ EL BOTÓN DE LA CRUZ ROJA */}
@@ -138,45 +131,45 @@ const DetalleCliente = ()=>{
 
         <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', mt: 2 }}>
           
-          <Typography variant="h4" component="h1" color="primary" sx={{ mb: 4, fontWeight: 'bold' }}>
+          <Typography variant="h4" component="h1" className="titulo-ficha">
             Ficha de Cliente N°: {id}
           </Typography>
           
           <Box sx={{ mb: 3, width: '100%' }}>
-            <Typography variant="body1" sx={{ mb: 1 }}>
+            <Typography variant="body1" className="texto-detalle capitalizar-texto">
               <strong>Nombre completo:</strong> {cliente.name.firstname} {cliente.name.lastname}
             </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
+            <Typography variant="body1" className="texto-detalle">
               <strong>Email:</strong> {cliente.email}
             </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
+            <Typography variant="body1" className='texto-detalle'>
               <strong>Teléfono:</strong> {cliente.phone}
             </Typography>
           </Box>
 
-          <Box sx={{ mb: 3, width: '100%', bgcolor: '#f5f7fa', p: 2, borderRadius: 2 }}>
-            <Typography variant="h6" component="h2" color="primary" sx={{ mb: 2 }}>
+          <Box className="bloque-info-detalle">
+            <Typography variant="h6" component="h2" className="subtitulo-detalle">
               Dirección Completa
             </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
+            <Typography variant="body1" className="texto-detalle capitalizar-texto">
               <strong>Calle:</strong> {cliente.address.street} <strong>N°:</strong> {cliente.address.number}
             </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
+            <Typography variant="body1" className="texto-detalle">
               <strong>Código Postal:</strong> {cliente.address.zipcode}
             </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
+            <Typography variant="body1" className="texto-detalle capitalizar-texto">
               <strong>Ciudad:</strong> {cliente.address.city}
             </Typography>
           </Box>
 
-          <Box sx={{ mb: 4, width: '100%' }}>
-            <Typography variant="h6" component="h2" color="primary" sx={{ mb: 2 }}>
+          <Box className="bloque-info-detalle">
+            <Typography variant="h6" component="h2" className="subtitulo-detalle">
               Credenciales de Acceso
             </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
+            <Typography variant="body1" className="texto-detalle">
               <strong>Usuario:</strong> {cliente.username}
             </Typography>
-            <Typography variant="body1" sx={{ mb: 1 }}>
+            <Typography variant="body1" className="texto-detalle">
               <strong>Contraseña:</strong> {cliente.password}
             </Typography>
           </Box>

@@ -1,0 +1,58 @@
+/* Contenedor principal con fondo completo */
+.contenedor-detalle-cliente {
+  background-image: url('../assets/fondoLogin.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+}
+
+
+.tarjeta-detalle {
+  max-width: 600px;
+  width: 100%;
+  position: relative; 
+}
+
+
+.titulo-ficha {
+  margin-bottom: 32px !important;
+  font-weight: 800 !important;
+  color: #d6e4f0 !important;
+}
+
+
+.bloque-info-detalle {
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: rgba(3, 30, 62, 0.5); 
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.subtitulo-detalle {
+  margin-bottom: 16px !important;
+  font-weight: 700 !important;
+  color: #64b5f6 !important;
+}
+
+
+.texto-detalle {
+  margin-bottom: 8px !important;
+  color: #ffffff !important;
+}
+
+.texto-detalle strong {
+  color: #aabbce; 
+}
+
+
+.capitalizar-texto {
+  text-transform: capitalize;
+}
