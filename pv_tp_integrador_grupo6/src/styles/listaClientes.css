@@ -16,7 +16,9 @@
 
 
 .tarjeta-cliente {
-  height: 100%;
+  width: 300px;
+  height: 220px;
+  overflow: hidden;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -27,6 +29,11 @@
 
 
 .nombre-cliente {
+
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+
   margin-bottom: 12px !important;
   color: #ffffff !important;
   font-weight: 700 !important;
@@ -34,6 +41,9 @@
 }
 
 .info-cliente {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-bottom: 6px !important;
   color: #aabbce !important; 
 }
@@ -55,5 +65,9 @@
 .error-container {
   padding: 24px;
   display: flex;
+  justify-content: center;
+}
+
+.contenedor-clientes .MuiGrid-container {
   justify-content: center;
 }
