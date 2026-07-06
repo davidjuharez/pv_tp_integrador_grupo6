@@ -150,7 +150,7 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
         />
 
 
-        <FormControl fullWidth variant="outlined" required>
+        <FormControl fullWidth variant="outlined" required sx={{ '& .MuiInputLabel-root': { color: 'white' }, '& .MuiOutlinedInput-root': { color: 'white', '& .MuiSvgIcon-root': { color: 'white' } } }}>
           <InputLabel id="select-ciudad-label">Ciudad</InputLabel>
           <Select
             labelId="select-ciudad-label"

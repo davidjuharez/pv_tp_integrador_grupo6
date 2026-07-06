@@ -30,7 +30,7 @@ const Dashboard = () => {
         {/* Tarjetas */}
         <Grid container spacing={3} alignItems="stretch">
           <Grid item xs={12} md={4} sx={{ display: 'flex' }}>
-            <Card elevation={3} sx={{ height: '130px', width: '360px' }}>
+            <Card elevation={3} sx={{ height: '130px', width: '366px' }}>
               <CardContent sx={{ p: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <CloudQueueIcon sx={{ fontSize: 55, color: '#64b5f6', flexShrink: 0 }} />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -43,7 +43,7 @@ const Dashboard = () => {
           </Grid>
 
           <Grid item xs={12} md={4} sx={{ display: 'flex' }}>
-            <Card elevation={3} sx={{ height: '130px', width: '360px' }}>
+            <Card elevation={3} sx={{ height: '130px', width: '366px' }}>
               <CardContent sx={{ p: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <PeopleIcon sx={{ fontSize: 55, color: '#64b5f6', flexShrink: 0 }} />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -56,7 +56,7 @@ const Dashboard = () => {
           </Grid>
 
           <Grid item xs={12} md={4} sx={{ display: 'flex' }}>
-            <Card elevation={3} sx={{ height: '130px', width: '360px'}}>
+            <Card elevation={3} sx={{ height: '130px', width: '366px'}}>
               <CardContent sx={{ p: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <UpdateIcon sx={{ fontSize: 55, color: '#64b5f6', flexShrink: 0 }} />
                 <Box sx={{ flex: 1, minWidth: 0 }}>
