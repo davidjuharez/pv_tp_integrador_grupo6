@@ -28,7 +28,7 @@ const Header = () => {
                             transition: 'transform 0.3s ease',
                             '&:hover': {
                                 transform: 'scale(1.03)', 
-                                filter: 'drop-shadow(0 0 6px rgba(255, 255, 255, 0.4))'
+                                filter: 'drop-shadow(0 0 3px rgba(0, 229, 255, 1)) drop-shadow(0 0 8px rgba(0, 229, 255, 0.4))'
                             }
                         }}>
                         <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
