@@ -163,11 +163,12 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
             onChange={(e) => setCiudad(e.target.value)}
             label="Ciudad"
           >
-            <MenuItem value="Mendoza">Mendoza</MenuItem>
             <MenuItem value="Buenos Aires">Buenos Aires</MenuItem>
             <MenuItem value="Córdoba">Córdoba</MenuItem>
-            <MenuItem value="Salta">Salta</MenuItem>
             <MenuItem value="Jujuy">Jujuy</MenuItem>
+            <MenuItem value="Mendoza">Mendoza</MenuItem>
+            <MenuItem value="Salta">Salta</MenuItem>
+            
           </Select>
         </FormControl>
 
