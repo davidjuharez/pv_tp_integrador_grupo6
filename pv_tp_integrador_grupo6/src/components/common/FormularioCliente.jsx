@@ -100,55 +100,59 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
       </Typography>
       
       <Box className="campos-formulario">
-        <TextField
-          label="Nombre"
-          variant="outlined"
-          required
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-        />
-        <TextField
-          label="Apellido"
-          variant="outlined"
-          required
-          value={apellido}
-          onChange={(e) => setApellido(e.target.value)}
-        />
-        <TextField
-          label="Email"
-          variant="outlined"
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <Box className="fila-formulario">
+          <TextField
+            label="Nombre"
+            variant="outlined"
+            required
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+          />
+          <TextField
+            label="Apellido"
+            variant="outlined"
+            required
+            value={apellido}
+            onChange={(e) => setApellido(e.target.value)}
+          />
+        </Box>
+        <Box className="fila-formulario">
+          <TextField
+            label="Email"
+            variant="outlined"
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-        <TextField
-          label="Teléfono"
-          variant="outlined"
-          type="number"
-          required
-          value={telefono}
-          onChange={(e) => setTelefono(e.target.value)}
-        />
+          <TextField
+            label="Teléfono"
+            variant="outlined"
+            type="number"
+            required
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
+          />
+        </Box>
+        <Box className="fila-formulario">
+          <TextField
+            label="Calle"
+            variant="outlined"
+            required
+            value={calle}
+            onChange={(e) => setCalle(e.target.value)}
+          />
 
-        <TextField
-          label="Calle"
-          variant="outlined"
-          required
-          value={calle}
-          onChange={(e) => setCalle(e.target.value)}
-        />
-
-        <TextField
-          label="Número"
-          variant="outlined"
-          type="number"
-          required
-          value={numero}
-          onChange={(e) => setNumero(e.target.value)}
-        />
-
+          <TextField
+            label="Número"
+            variant="outlined"
+            type="number"
+            required
+            value={numero}
+            onChange={(e) => setNumero(e.target.value)}
+          />
+        </Box>
 
         <FormControl fullWidth variant="outlined" required sx={{ '& .MuiInputLabel-root': { color: 'white' }, '& .MuiOutlinedInput-root': { color: 'white', '& .MuiSvgIcon-root': { color: 'white' } } }}>
           <InputLabel id="select-ciudad-label">Ciudad</InputLabel>

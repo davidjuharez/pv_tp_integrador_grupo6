@@ -1,23 +1,47 @@
-
 .formulario-alta {
   padding: 24px;
   background-color: #031c37; 
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
 }
-
 
 .titulo-formulario {
-  margin-bottom: 16px !important;
+  margin-bottom: 24px !important;
   font-weight: bold !important;
   color: #ffffff !important;
+  text-align: center;
 }
-
 
 .campos-formulario {
   display: flex;
+  flex-direction: column;
   gap: 16px;
   margin-bottom: 16px;
-  flex-wrap: wrap;
-  align-items: center;
+}
+
+.fila-formulario {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.fila-formulario .MuiTextField-root {
+  flex: 1;
+}
+
+.boton-guardar {
+  width: 100%;
+  padding: 10px !important;
+  font-weight: bold !important;
+}
+
+@media (max-width: 480px) {
+  .fila-formulario {
+    flex-direction: column;
+  }
+}
+.campos-formulario .MuiOutlinedInput-root {
+  background-color: rgba(255, 255, 255, 0.15) !important;
 }
