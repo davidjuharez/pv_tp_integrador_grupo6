@@ -4,7 +4,8 @@ import { GitHub, LinkedIn, Email, Instagram, Facebook, Twitter, Phone, LocationC
 
 const Footer = () => {
   return (
-    <Box component="footer" sx={{ bgcolor: '#03264e', py: 2, px: 3, textAlign: 'center', mt: 'auto' }}>
+    <Box component="footer" sx={{ bgcolor: 'rgba(3, 38, 78, 0.4)',
+backdropFilter: 'blur(8px)', py: 2, px: 3, textAlign: 'center', mt: 'auto' }}>
       <Container maxWidth="lg">
         <Grid container spacing={4} sx={{ justifyContent: "center" }}>
           <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
