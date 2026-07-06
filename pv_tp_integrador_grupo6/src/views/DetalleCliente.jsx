@@ -6,6 +6,7 @@ import { Box, CircularProgress, Alert, Typography, Button, Card, CardContent, Ic
 import CloseIcon from '@mui/icons-material/Close';
 import { useAdmin } from '../context/AdminContext';
 import '../styles/detalleCliente.css';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const DetalleCliente = ()=>{
   const { id } = useParams();
@@ -179,11 +180,12 @@ const DetalleCliente = ()=>{
               variant="contained" 
               color="error" 
               size="large"
+              startIcon={<DeleteIcon />}
               sx={{ mt: 2, borderRadius: 2, px: 4 }}
               className="boton-eliminar"
               onClick={manejarEliminar}
             >
-            Eliminar Cliente de la Base de Datos
+            Eliminar Cliente
             </Button>
           )}
 
