@@ -2,6 +2,7 @@ import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { useAdmin } from '../../context/AdminContext';
 import logo from '../../assets/logo.png';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom';
 
 
 const Header = () => {
@@ -17,7 +18,21 @@ const Header = () => {
             }}>
             <Toolbar>
                 <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, gap: 1.5 }}>
-                    <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+                    
+                    <Box 
+                        component={Link} 
+                        to="/" 
+                        sx={{ 
+                            display: 'flex', 
+                            alignItems: 'center',
+                            transition: 'transform 0.3s ease',
+                            '&:hover': {
+                                transform: 'scale(1.03)', 
+                                filter: 'drop-shadow(0 0 3px rgba(0, 229, 255, 1)) drop-shadow(0 0 8px rgba(0, 229, 255, 0.4))'
+                            }
+                        }}>
+                        <img src={logo} alt="Logo" style={{ height: '70px', width: 'auto' }} />
+                    </Box>
                     <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: '0.8px', color: 'rgba(255, 255, 255, 0.7)', fontSize: '1.3rem' }}>
                         Central de Clientes
                     </Typography>

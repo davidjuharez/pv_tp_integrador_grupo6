@@ -2,17 +2,16 @@ import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
-  // 1. Creamos una variable con todos los estilos de la letra juntos
   const estiloLink = { 
-    color: 'rgba(255, 255, 255, 0.75)', 
+    color: 'rgba(255, 255, 255, 0.7)', 
     textDecoration: 'none', 
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif', 
-    fontWeight: '500', 
-    fontSize: '15px',
-    padding: '8px 20px',               
-    borderRadius: '8px',              
+    fontWeight: '600', 
+    fontSize: '18px',
+    padding: '4px 0px', 
     letterSpacing: '0.5px',
-    transition: 'all 0.3s ease',      
+    transition: 'all 0.2s ease-in-out', 
+    borderBottom: '2px solid transparent',
   };
 
   return (
@@ -24,14 +23,16 @@ const Nav = () => {
         justifyContent: 'center', 
         px: 2, 
         py: 1, 
-        gap: 3,         
+        gap: 6,         
         borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
        
+        '& a': {
+          borderBottom: '2px solid transparent', 
+        },
         '& a:hover': {
-          color: '#ffffff !important',
-          bgcolor: 'rgba(255, 255, 255, 0.1)', 
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-        }
+        color: '#ffffff !important',
+        filter: 'drop-shadow(0 0 4px rgba(0, 229, 255, 1)) drop-shadow(0 0 12px rgba(0, 229, 255, 0.6))', 
+      }
   }}>
       
       {/* 2. Cambiamos "Dashboard" por "Inicio" y le pasamos la variable estiloLink */}

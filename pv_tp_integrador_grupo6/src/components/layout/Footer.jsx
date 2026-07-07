@@ -4,14 +4,25 @@ import { GitHub, LinkedIn, Email, Instagram, Facebook, Twitter, Phone, LocationC
 
 const Footer = () => {
   return (
-    <Box component="footer" sx={{ bgcolor: '#03264e', py: 2, px: 3, textAlign: 'center', mt: 'auto' }}>
+    <Box component="footer" sx={{ bgcolor: 'rgba(3, 38, 78, 0.4)',
+backdropFilter: 'blur(8px)', py: 2, px: 3, textAlign: 'center', mt: 'auto' }}>
       <Container maxWidth="lg">
         <Grid container spacing={4} sx={{ justifyContent: "center" }}>
           <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Typography variant="h6" fontWeight="bold" sx={{ mb: 2, color: 'rgba(255,255,255,0.7)' }}>ENLACES RÁPIDOS</Typography>
             <Stack spacing={0.5}>
-              {['Inicio', 'Clientes', 'Detalles', 'Agregar Clientes', 'Sector'].map((text) => (
-                <Typography key={text} component={Link} to="/" sx={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', '&:hover': { color: 'white' } }}>{text}</Typography>
+              {[
+                { text: 'Inicio', path: '/' },
+                { text: 'Clientes', path: '/clientes' }
+                ].map((item) => (
+                <Typography 
+                  key={item.text} 
+                  component={Link} 
+                  to={item.path} 
+                  sx={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', '&:hover': { color: 'white' } }}
+                >
+                  {item.text}
+                </Typography>
               ))}
             </Stack>
           </Grid>
@@ -25,9 +36,24 @@ const Footer = () => {
           <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Typography variant="h6" fontWeight="bold" sx={{ mb: 2, color: 'rgba(255,255,255,0.7)' }}>NUESTRAS REDES</Typography>
             <Stack direction="row" spacing={1} sx={{ justifyContent: { xs: 'center', md: 'flex-end' } }}>
-              {[GitHub, LinkedIn, Instagram, Facebook, Twitter].map((Icon, i) => (
-                <IconButton key={i} sx={{ color: 'white', background: 'rgba(255,255,255,0.1)' }}><Icon /></IconButton>
-              ))}
+              {[
+                  { Icon: GitHub, url: 'https://github.com' },
+                  { Icon: LinkedIn, url: 'https://linkedin.com' },
+                  { Icon: Instagram, url: 'https://instagram.com' },
+                  { Icon: Facebook, url: 'https://facebook.com' },
+                  { Icon: Twitter, url: 'https://twitter.com' }
+                ].map((item, i) => (
+                  <IconButton 
+                    key={i} 
+                    component="a" 
+                    href={item.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    sx={{ color: 'white', background: 'rgba(255,255,255,0.1)', '&:hover': { background: 'rgba(255,255,255,0.2)' } }}
+                  >
+                    <item.Icon />
+                  </IconButton>
+                ))}
             </Stack>
           </Grid>
 
