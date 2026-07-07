@@ -58,6 +58,7 @@ const FormularioCliente =({ onClienteAgregado, onClose })=>{
         },
         body: JSON.stringify(nuevoCliente)
       });
+      console.log("Código de estado:", respuesta.status);
 
       if (!respuesta.ok) {
         throw new Error('Error al registrar el cliente en el servidor');
