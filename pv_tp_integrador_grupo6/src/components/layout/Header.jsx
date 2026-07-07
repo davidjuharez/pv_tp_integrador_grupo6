@@ -16,8 +16,8 @@ const Header = () => {
                 boxShadow: 'none', 
                 border: 'none !important' 
             }}>
-            <Toolbar>
-                <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, gap: 1.5 }}>
+            <Toolbar sx={{ flexWrap: 'wrap', gap: 2, justifyContent: 'center' }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, gap: 1.5, justifyContent: { xs: 'center', sm: 'flex-start' } }}>
                     
                     <Box 
                         component={Link} 
